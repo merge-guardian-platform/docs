@@ -1,0 +1,31 @@
+---
+title: "CLI Commands"
+description: "Detailed reference for the merge-guardian CLI."
+---
+
+## `analyze pr`
+
+The core command for analyzing GitHub Pull Requests.
+
+### Usage
+```bash
+merge-guardian analyze pr [flags]
+```
+
+### Flags
+
+| Flag | Shorthand | Description |
+| :--- | :--- | :--- |
+| `--owner` | `-o` | GitHub repository owner. |
+| `--repo` | `-r` | GitHub repository name. |
+| `--pr-number` | `-p` | Pull Request number. |
+| `--github-token`| `-g` | GitHub Personal Access Token. |
+| `--ai-provider` | `-i` | `openai`, `gemini`, or `anthropic`. |
+| `--ai-api-key` | `-k` | API Key for the AI service. |
+
+### Output
+The command outputs a structured JSON response containing:
+1. `risk_score`: Deterministic 0-100 score.
+2. `risk_level`: Severity assessment.
+3. `potential_conflicts`: List of detected semantic or structural issues.
+4. `merge_strategy_recommendation`: Suggested merge order.

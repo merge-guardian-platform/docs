@@ -1,0 +1,57 @@
+---
+title: Quickstart
+description: "Protect your branch in less than 5 minutes."
+---
+
+## 1. Get your API Keys
+
+You will need:
+1. A **GitHub Personal Access Token (PAT)** with `repo` and `pull_requests` scopes.
+2. An API Key for your preferred AI provider:
+   - **OpenAI**: [platform.openai.com](https://platform.openai.com)
+   - **Google Gemini**: [aistudio.google.com](https://aistudio.google.com)
+   - **Anthropic**: [console.anthropic.com](https://console.anthropic.com)
+
+## 2. Add Secrets to GitHub
+
+Add the following as **Actions Secrets** in your repository:
+- `GITHUB_TOKEN`: Use the repository's default token or your PAT.
+- `AI_API_KEY`: Your AI provider's API key.
+
+## 3. Create a Workflow
+
+Create a new file at `.github/workflows/merge-guardian.yml`:
+
+```yaml
+name: AI Conflict Analysis
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+
+      - name: Run Merge Guardian
+        uses: merge-guardian-platform/merge-guardian-workflow@v0.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          ai-api-key: ${{ secrets.AI_API_KEY }}
+          ai-provider: 'openai' # or 'gemini', 'anthropic'
+```
+
+## 4. View Results
+
+Once you open a PR, Merge Guardian will analyze your changes and provide a detailed report including:
+- **Baseline Risk Score** (Deterministic)
+- **AI Severity Assessment** (High, Medium, Low)
+- **Semantic Conflict Breakdown**
+- **Merge Order Recommendations**

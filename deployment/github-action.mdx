@@ -1,0 +1,33 @@
+---
+title: "GitHub Action"
+description: "Deploying Merge Guardian to your CI/CD pipeline."
+---
+
+The recommended way to use Merge Guardian is via the official GitHub Action.
+
+## Installation
+
+Add the action to your workflow file:
+
+```yaml
+- name: Merge Guardian AI
+  uses: merge-guardian-platform/merge-guardian-workflow@v0.1
+  with:
+    github-token: ${{ secrets.GITHUB_TOKEN }}
+    ai-api-key: ${{ secrets.AI_API_KEY }}
+    ai-provider: 'openai'
+```
+
+## Inputs
+
+| Input | Description | Required | Default |
+| :--- | :--- | :--- | :--- |
+| `github-token` | Your GitHub Secret or PAT | **Yes** | N/A |
+| `ai-api-key` | API Key for AI service | **Yes** | N/A |
+| `ai-provider` | `openai`, `gemini`, or `anthropic` | **Yes** | `openai` |
+| `owner` | GitHub Repo Owner | No | `${{ github.repository_owner }}` |
+| `repo` | GitHub Repo Name | No | `${{ github.event.repository.name }}` |
+| `pr-number` | The PR to analyze | No | `${{ github.event.pull_request.number }}` |
+
+## Permissions
+The action requires `pull-requests: read` permissions to fetch the diff and metadata.

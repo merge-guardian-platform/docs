@@ -1,0 +1,24 @@
+---
+title: "CLI Setup"
+description: "Running Merge Guardian on your local machine."
+---
+
+The `merge-guardian` CLI is a standalone Go binary used to perform analysis manually or in custom CI environments.
+
+## Installation
+
+### From Source
+```bash
+go install github.com/merge-guardian-platform/merge-guardian/cmd/merge-guardian@latest
+```
+
+### Manual Build
+1. Clone the repository: `git clone https://github.com/merge-guardian-platform/merge-guardian.git`
+2. Build the binary: `go build -o merge-guardian ./cmd/merge-guardian`
+3. Move to your path: `mv merge-guardian /usr/local/bin/`
+
+## Environment Variables
+The CLI honors the following environment variables if flags are not provided:
+- `GITHUB_TOKEN`
+- `AI_API_KEY`
+- `AI_PROVIDER`

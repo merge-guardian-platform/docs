@@ -1,0 +1,24 @@
+---
+title: "How it Works"
+description: "The three levels of Merge Guardian intelligence."
+---
+
+Merge Guardian operates on a tiered intelligence model to provide comprehensive protection for your codebase.
+
+## Level 1: Context Aggregation
+The engine begins by gathering all relevant metadata from your repository:
+- **Current PR Diff**: What files and lines are changing.
+- **Concurrent Open PRs**: Who else is working on the same branch.
+- **Recently Merged PRs**: What changes have landed in the last 24-48 hours.
+
+## Level 2: Deterministic Risk Engine
+Before involving AI, Merge Guardian applies a set of hardcoded rules to calculate a baseline risk score:
+- **Volume**: Large PRs are inherently riskier.
+- **Topology**: Changes that span multiple architectural layers (directories) are flagged.
+- **Hotspots**: Files that frequently cause breakage or are shared dependencies are weighted heavily.
+
+## Level 3: AI Predictive Engine
+The gathered context and deterministic score are passed to a Large Language Model (LLM). The AI performs:
+- **Semantic Analysis**: Detecting if changes in PR A break the logic in PR B, even if there are no git conflicts.
+- **Refactor Detection**: Identifying large-scale renames or structural shifts that might be missed by standard diffs.
+- **Strategy Recommendation**: Synthesizing all data to recommend an optimal merge path.

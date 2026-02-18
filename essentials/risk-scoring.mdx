@@ -1,0 +1,25 @@
+---
+title: "Risk Scoring"
+description: "Understanding how Merge Guardian calculates risk."
+---
+
+The risk score is a deterministic 0-100 value used as a baseline for AI analysis.
+
+## Scoring Factors
+
+| Factor | Weight | Description |
+| :--- | :--- | :--- |
+| **Base Score** | 0 | The starting point for every PR. |
+| **Per File Changed** | +0.5 | Penalizes large diffs that are harder to audit. |
+| **Hotspot File** | +10.0 | High weight for sensitive files like `go.mod` or `package.json`. |
+| **Cross-Directory** | +5.0 | Additional risk if changes span multiple top-level folders. |
+| **Recent Conflict** | +15.0 | Added if there has been recent merge activity in the target branch. |
+
+## Capping
+Scores are automatically capped at **100** to ensure a consistent risk scale.
+
+## Interpretation
+
+- **0-30 (Low)**: Routine changes, minimal risk of conflict.
+- **31-70 (Medium)**: Substantial changes or touchpoint with shared modules.
+- **71-100 (High)**: Major architectural changes or touching multiple hotspots.

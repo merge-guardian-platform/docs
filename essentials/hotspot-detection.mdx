@@ -1,0 +1,23 @@
+---
+title: "Hotspot Detection"
+description: "Identifying high-risk files automatically."
+---
+
+Hotspots are files or directories that, when modified, present a higher probability of breaking core functionality or causing merge conflicts.
+
+## Default Hotspots
+
+Merge Guardian comes with a preconfigured list of common hotspots:
+
+- **Dependency Managers**: `package.json`, `go.mod`, `go.sum`, `yarn.lock`.
+- **Infrastructure**: `config/`, database `migrations/`.
+- **Documentation**: `README.md` (to ensure documentation stays in sync).
+
+## How it works
+The detection engine uses a fuzzy matching system:
+1. **Directory Match**: If a directory (e.g., `config/`) is flagged, any file inside it contributes to the risk score.
+2. **File Match**: Exact matches for critical project files.
+3. **Base Match**: For root-level files that might exist in subdirectories (e.g. nested `README.md`).
+
+## Customizing Hotspots
+Currently, hotspots are defined in the `internal/risk` package. Support for a `.merge-guardian.yaml` configuration for user-defined hotspots is coming in a future release.

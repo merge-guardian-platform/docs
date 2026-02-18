@@ -1,0 +1,80 @@
+{
+    "name": "Merge Guardian AI",
+    "logo": {
+        "light": "/logo/logo-light.png",
+        "dark": "/logo/logo-dark.png"
+    },
+    "favicon": "/favicon.png",
+    "colors": {
+        "primary": "#f97316",
+        "light": "#fb923c",
+        "dark": "#ea580c"
+    },
+    "topbarLinks": [
+        {
+            "name": "Support",
+            "url": "https://github.com/merge-guardian-platform/merge-guardian/issues"
+        }
+    ],
+    "topbarCtaButton": {
+        "name": "Get Started",
+        "url": "https://github.com/merge-guardian-platform/merge-guardian-workflow"
+    },
+    "tabs": [
+        {
+            "name": "Documentation",
+            "url": "docs"
+        }
+    ],
+    "anchors": [
+        {
+            "name": "GitHub Action",
+            "icon": "github",
+            "url": "https://github.com/marketplace/actions/merge-guardian-ai"
+        },
+        {
+            "name": "CLI Tool",
+            "icon": "terminal",
+            "url": "https://github.com/merge-guardian-platform/merge-guardian"
+        }
+    ],
+    "navigation": [
+        {
+            "group": "Getting Started",
+            "pages": [
+                "introduction",
+                "quickstart"
+            ]
+        },
+        {
+            "group": "Core Concepts",
+            "pages": [
+                "essentials/how-it-works",
+                "essentials/risk-scoring",
+                "essentials/hotspot-detection"
+            ]
+        },
+        {
+            "group": "Deployment",
+            "pages": [
+                "deployment/github-action",
+                "deployment/cli-setup"
+            ]
+        },
+        {
+            "group": "Reference",
+            "pages": [
+                "reference/cli-commands"
+            ]
+        },
+        {
+            "group": "Community",
+            "pages": [
+                "community/contributing"
+            ]
+        }
+    ],
+    "footerSocials": {
+        "github": "https://github.com/merge-guardian-platform"
+    }
+}
